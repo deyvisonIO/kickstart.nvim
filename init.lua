@@ -2,7 +2,8 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.tabstop = 4
 vim.g.shiftwidth = 4
-vim.wo.relativenumber = true 
+vim.wo.relativenumber = true
+vim.wo.number = true
 
 
 -- Install package manager
@@ -26,6 +27,9 @@ vim.opt.rtp:prepend(lazypath)
 --
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
+
+require('custom.keymaps')
+
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
@@ -196,7 +200,7 @@ require('lazy').setup({
   --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {})
 
 -- [[ Setting options ]]
