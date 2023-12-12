@@ -1,7 +1,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-vim.g.tabstop = 4
-vim.g.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 vim.wo.relativenumber = true
 vim.wo.number = true
 
@@ -184,6 +184,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'virchau13/tree-sitter-astro'
     },
     build = ':TSUpdate',
   },
