@@ -201,6 +201,12 @@ require('lazy').setup({
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
+-- vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#51B3EC', bold=true, default=true })
+vim.api.nvim_set_hl(0, 'CursorLineNr', { fg='white', bold=true, default=false })
+-- vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#FB508F', bold=true, default=true })
+
+
+vim.opt.cursorline = true
 -- Set highlight on search
 vim.o.hlsearch = false
 
