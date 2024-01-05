@@ -115,20 +115,13 @@ require('lazy').setup({
       end,
     },
   },
-
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    'ayu-theme/ayu-vim',
     priority = 1000,
-    opts = {
-      transparent = true,
-    },
-    config = function(_, opts)
-      require('onedark').setup(opts)
-      vim.cmd.colorscheme 'onedark'
+    config= function(_)
+      vim.cmd.colorscheme 'ayu'
     end,
   },
-
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -139,7 +132,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'onedark',
+        theme = 'ayu',
         component_separators = '|',
         section_separators = '',
       },
