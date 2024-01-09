@@ -49,6 +49,12 @@ require('lazy').setup({
       -- Automatically install LSPs to stdpath for neovim
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+      
+      {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        opts = {}
+      },
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -117,8 +123,10 @@ require('lazy').setup({
   },
   {
     'ayu-theme/ayu-vim',
+
     priority = 1000,
     config= function(_)
+
       vim.cmd.colorscheme 'ayu'
     end,
   },
