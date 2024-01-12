@@ -185,7 +185,8 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
-      'virchau13/tree-sitter-astro'
+      'virchau13/tree-sitter-astro',
+      'windwp/nvim-ts-autotag',
     },
     build = ':TSUpdate',
   },
@@ -538,5 +539,16 @@ cmp.setup {
   },
 }
 
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics,
+    {
+        underline = true,
+        virtual_text = {
+            spacing = 5,
+            severity_limit = 'Warning',
+        },
+        update_in_insert = true,
+    }
+)
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
