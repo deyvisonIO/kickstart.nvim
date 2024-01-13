@@ -49,7 +49,7 @@ require('lazy').setup({
       -- Automatically install LSPs to stdpath for neovim
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      
+
       {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
@@ -82,7 +82,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -125,8 +125,7 @@ require('lazy').setup({
     'ayu-theme/ayu-vim',
 
     priority = 1000,
-    config= function(_)
-
+    config = function(_)
       vim.cmd.colorscheme 'ayu'
     end,
   },
@@ -186,9 +185,25 @@ require('lazy').setup({
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
       'virchau13/tree-sitter-astro',
-      'windwp/nvim-ts-autotag',
+      'windwp/nvim-ts-autotag',   -- Autoclose html tags
+      {
+        "kylechui/nvim-surround", -- Make chaging surrounding text eaier to edit
+        version = "*",            -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
+        config = function()
+          require("nvim-surround").setup({
+            -- Configuration here, or leave empty to use defaults
+          })
+        end
+      }
     },
     build = ':TSUpdate',
+  },
+  {
+    "smjonas/inc-rename.nvim",
+    config = function()
+      require("inc_rename").setup()
+    end,
   },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
@@ -211,7 +226,7 @@ require('lazy').setup({
 -- NOTE: You can change these options as you wish!
 
 -- vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#51B3EC', bold=true, default=true })
-vim.api.nvim_set_hl(0, 'CursorLineNr', { fg='white', bold=true, default=false })
+vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = 'white', bold = true, default = false })
 -- vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#FB508F', bold=true, default=true })
 
 
@@ -540,15 +555,15 @@ cmp.setup {
 }
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics,
-    {
-        underline = true,
-        virtual_text = {
-            spacing = 5,
-            severity_limit = 'Warning',
-        },
-        update_in_insert = true,
-    }
+  vim.lsp.diagnostic.on_publish_diagnostics,
+  {
+    underline = true,
+    virtual_text = {
+      spacing = 5,
+      severity_limit = 'Warning',
+    },
+    update_in_insert = true,
+  }
 )
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
